@@ -1,0 +1,9 @@
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\AIT_CLIENT\bin\Debug\AIT_CLIENT.exe.config
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\AIT_CLIENT\bin\Debug\AIT_CLIENT.exe
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\AIT_CLIENT\bin\Debug\AIT_CLIENT.pdb
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\AIT_CLIENT\obj\Debug\AIT_CLIENT.csproj.AssemblyReference.cache
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\AIT_CLIENT\obj\Debug\AIT_CLIENT.Properties.Resources.resources
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\AIT_CLIENT\obj\Debug\AIT_CLIENT.csproj.GenerateResource.cache
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\AIT_CLIENT\obj\Debug\AIT_CLIENT.csproj.CoreCompileInputs.cache
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\AIT_CLIENT\obj\Debug\AIT_CLIENT.exe
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\AIT_CLIENT\obj\Debug\AIT_CLIENT.pdb
