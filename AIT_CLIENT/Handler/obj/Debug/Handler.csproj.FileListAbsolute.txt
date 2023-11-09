@@ -1,0 +1,2 @@
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\Handler\obj\Debug\Handler.csproj.AssemblyReference.cache
+C:\Users\00073\OneDrive\문서\GitHub\Program\AIT_CLIENT\Handler\obj\Debug\Handler.csproj.CoreCompileInputs.cache
