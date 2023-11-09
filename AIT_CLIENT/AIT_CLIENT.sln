@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT_CLIENT", "AIT_CLIENT\AIT_CLIENT.csproj", "{181B1E4D-88B3-4CB0-B66A-10209CADB19E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handler", "Handler\Handler.csproj", "{B79CCF59-8EC6-485A-805E-18FF6283A516}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{181B1E4D-88B3-4CB0-B66A-10209CADB19E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{181B1E4D-88B3-4CB0-B66A-10209CADB19E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{181B1E4D-88B3-4CB0-B66A-10209CADB19E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B79CCF59-8EC6-485A-805E-18FF6283A516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B79CCF59-8EC6-485A-805E-18FF6283A516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B79CCF59-8EC6-485A-805E-18FF6283A516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B79CCF59-8EC6-485A-805E-18FF6283A516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
