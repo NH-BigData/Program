@@ -357,7 +357,7 @@ namespace Handler.DataBaseHandler
 
         internal DbConnection ConnectionForAdater()
         {
-            var connection = new ConnectionPool().getConnectionObject(poolName);
+            var connection = new ConnectionPool().GetConnectionObject(poolName);
             return connection;
         }
 

@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Data;
 using System.Data.Common;
-using System.Data.Odbc;
 using System.Data.SqlClient;
 
 namespace Handler.DataBaseHandler
@@ -31,18 +30,18 @@ namespace Handler.DataBaseHandler
                 if (pool[poolName] == null)
                 {
                     pool.Add(poolName, DBNull.Value);
-                    createDBConnection(poolName);
+                    CreateDBConnection(poolName);
                 }
                 else if (DBNull.Value.Equals(pool[poolName]))
                 {
-                    createDBConnection(poolName);
+                    CreateDBConnection(poolName);
                 }
 
                 DbConnection ret = null;
                 var i = 0;
                 do
                 {
-                    ret = searchIdlePool(poolName);
+                    ret = SearchPool(poolName);
                 } while (ret == null && i++ < 300);
 
                 return ret;
@@ -54,12 +53,12 @@ namespace Handler.DataBaseHandler
             pool.Remove(poolName);
         }
 
-        public static void reload()
+        public static void Reload()
         {
             pool = new Hashtable();
         }
 
-        internal DbConnection getConnectionObject(string poolName)
+        internal DbConnection GetConnectionObject(string poolName)
         {
             DBConfig conf = null;
             if (confTmp == null)
@@ -67,11 +66,10 @@ namespace Handler.DataBaseHandler
             else
                 conf = confTmp;
 
-
             return new SqlConnection(conf.GetConnectionString(poolName));
         }
 
-        private DbConnection searchIdlePool(string poolName)
+        private DbConnection SearchPool(string poolName)
         {
             var temp = (DbConnection[])pool[poolName];
 
@@ -81,7 +79,7 @@ namespace Handler.DataBaseHandler
                     if (ConnectionState.Closed.Equals(temp[i].State))
                     {
                         temp[i].Dispose();
-                        temp[i] = getConnectionObject(poolName);
+                        temp[i] = GetConnectionObject(poolName);
                         return temp[i];
                     }
 
@@ -89,18 +87,18 @@ namespace Handler.DataBaseHandler
                 }
 
             var conf = new DBConfig();
-            if ("NO".Equals(conf[poolName + "_ALLOW_WAIT"].ToUpper())) return getConnectionObject(poolName);
+            if ("NO".Equals(conf[poolName + "_ALLOW_WAIT"].ToUpper())) return GetConnectionObject(poolName);
 
             return null;
         }
 
-        private void createDBConnection(string poolName)
+        private void CreateDBConnection(string poolName)
         {
             DbConnection[] conn = null;
             if (DBNull.Value.Equals(pool[poolName]))
             {
                 conn = new DbConnection[1];
-                for (var i = 0; i < conn.Length; i++) conn[i] = getConnectionObject(poolName);
+                for (var i = 0; i < conn.Length; i++) conn[i] = GetConnectionObject(poolName);
                 pool[poolName] = conn;
             }
             else
@@ -109,7 +107,7 @@ namespace Handler.DataBaseHandler
                 conn = new DbConnection[1];
                 for (var i = 0; i < conn.Length; i++)
                     if (i >= temp.Length)
-                        conn[i] = getConnectionObject(poolName);
+                        conn[i] = GetConnectionObject(poolName);
                     else
                         conn[i] = temp[i];
                 pool[poolName] = conn;
