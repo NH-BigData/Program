@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DataBaseHandler\ConnectionPool.cs" />
     <Compile Include="DataBaseHandler\DBHandler.cs" />
+    <Compile Include="DataBaseHandler\SQLBase.cs" />
     <Compile Include="SecureHandler\DES.cs" />
     <Compile Include="SecureHandler\SecureObject.cs" />
     <Compile Include="SystemConfigHandler\DataBaseConfig.cs" />
