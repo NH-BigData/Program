@@ -22,12 +22,17 @@ namespace Handler.SystemConfigHandler
             }
         }
 
+        public DBConfig()
+        {
+            
+        }
+
         public DBConfig(string sysConfigPath)
         {
             ini = new IniHandler(sysConfigPath);
         }
 
-        public string getConnectionString(string poolName)
+        public string GetConnectionString(string poolName)
         {
             var so = new SecureObject();
             var vendor = this[poolName + "_VENDOR"];
