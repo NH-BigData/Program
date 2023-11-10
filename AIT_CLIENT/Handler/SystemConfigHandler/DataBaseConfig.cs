@@ -22,11 +22,6 @@ namespace Handler.SystemConfigHandler
             }
         }
 
-        public DBConfig()
-        {
-
-        }
-
         public DBConfig(string sysConfigPath)
         {
             ini = new IniHandler(sysConfigPath);
@@ -62,9 +57,7 @@ namespace Handler.SystemConfigHandler
             var ret = new StringBuilder("Data Source=").Append(svrName).Append(",").Append(port)
                     .Append(";Initial Catalog=").Append(dbName)
                     .Append(";User Id=").Append(uid)
-
                     .Append(";Password=").Append(pwd).ToString();
-
             return ret;
         }
     }
