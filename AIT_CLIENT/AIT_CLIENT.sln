@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT_CLIENT", "AIT_CLIENT\AI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handler", "Handler\Handler.csproj", "{B79CCF59-8EC6-485A-805E-18FF6283A516}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controller", "Controller", "{398548B1-878A-483E-ACCE-985A7B036138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Query", "Query\Query.csproj", "{F00F5F9A-40CF-4230-B12E-30D57470E6A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "View", "View", "{DB99DD56-57AC-4EEF-A2FD-22D072BBA6A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +27,18 @@ Global
 		{B79CCF59-8EC6-485A-805E-18FF6283A516}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B79CCF59-8EC6-485A-805E-18FF6283A516}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B79CCF59-8EC6-485A-805E-18FF6283A516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00F5F9A-40CF-4230-B12E-30D57470E6A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00F5F9A-40CF-4230-B12E-30D57470E6A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00F5F9A-40CF-4230-B12E-30D57470E6A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00F5F9A-40CF-4230-B12E-30D57470E6A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{181B1E4D-88B3-4CB0-B66A-10209CADB19E} = {DB99DD56-57AC-4EEF-A2FD-22D072BBA6A5}
+		{B79CCF59-8EC6-485A-805E-18FF6283A516} = {398548B1-878A-483E-ACCE-985A7B036138}
+		{F00F5F9A-40CF-4230-B12E-30D57470E6A4} = {398548B1-878A-483E-ACCE-985A7B036138}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0900AD7C-9D4B-48DF-9659-CD6066670C96}

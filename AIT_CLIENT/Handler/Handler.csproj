@@ -38,10 +38,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="DataBaseHandler\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="DataBaseHandler\ConnectionPool.cs" />
+    <Compile Include="DataBaseHandler\DBHandler.cs" />
     <Compile Include="SecureHandler\DES.cs" />
     <Compile Include="SecureHandler\SecureObject.cs" />
     <Compile Include="SystemConfigHandler\DataBaseConfig.cs" />
@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
