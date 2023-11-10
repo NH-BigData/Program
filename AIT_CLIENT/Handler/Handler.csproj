@@ -42,6 +42,7 @@
     <Folder Include="DataBaseHandler\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SecureHandler\DES.cs" />
     <Compile Include="SecureHandler\SecureObject.cs" />
     <Compile Include="SystemConfigHandler\DataBaseConfig.cs" />
     <Compile Include="SystemConfigHandler\IniHandler.cs" />

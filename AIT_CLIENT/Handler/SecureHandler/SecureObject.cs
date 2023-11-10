@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Handler.SecureHandler
+﻿namespace Handler.SecureHandler
 {   
     public class SecureObject
     {
@@ -32,9 +26,20 @@ namespace Handler.SecureHandler
 
         private string GetEncryptString(byte[] key, string targetString)
         {
-
-            return string.Empty;
+            var encryptObject = new DES(key);
+            return encryptObject.Encrypt(targetString);
         }
 
+        public string GetDecryptString(string targetString)
+        {
+            return GetDecryptString(key, targetString);
+        }
+
+        private string GetDecryptString(byte[] key, string targetString)
+        {
+            var decryptObject = new DES(key);
+            return decryptObject.Decrypt(targetString);
+        }
+        
     }
 }

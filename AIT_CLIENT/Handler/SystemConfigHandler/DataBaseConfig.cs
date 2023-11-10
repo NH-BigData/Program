@@ -43,11 +43,11 @@ namespace Handler.SystemConfigHandler
             var pwd = this[poolName + "_PWD"];
             try
             {
-                pwd = so.getDESDecryptString(this[poolName + "_PWD"]);
+                pwd = so.GetDecryptString(this[poolName + "_PWD"]);
             }
             catch
             {
-                this[poolName + "_PWD"] = so.getDESEncryptString(pwd);
+                this[poolName + "_PWD"] = so.GetEncryptString(pwd);
             }
 
             return GetConnectionString(vendor, dbName, svrName, port, uid, pwd);
@@ -62,6 +62,7 @@ namespace Handler.SystemConfigHandler
             var ret = new StringBuilder("Data Source=").Append(svrName).Append(",").Append(port)
                     .Append(";Initial Catalog=").Append(dbName)
                     .Append(";User Id=").Append(uid)
+
                     .Append(";Password=").Append(pwd).ToString();
 
             return ret;
