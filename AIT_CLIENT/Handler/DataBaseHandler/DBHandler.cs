@@ -2,12 +2,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Text;
-using System.Data.Common;
-using System.Data;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Handler.DataBaseHandler
 {
@@ -42,7 +42,7 @@ namespace Handler.DataBaseHandler
             poolName = defaultConnName;
             vendor = conf[poolName + "_VENDOR"];
             conectionString = conf.GetConnectionString(poolName);
-            initializeConnection();
+            InitializeConnection();
             activeConnection.Open();
         }
 
@@ -64,7 +64,7 @@ namespace Handler.DataBaseHandler
 
             Trace.WriteLine(string.Format("{0:HH:mm:ss.fff} DBHandler > 접속문자열:{1}", DateTime.Now, conectionString));           
            
-            initializeConnection();
+            InitializeConnection();
             try
             {
                 if (activeConnection != null && ConnectionState.Closed.Equals(activeConnection.State))
@@ -80,15 +80,6 @@ namespace Handler.DataBaseHandler
         ~DBHandler()
         {
             DataBaseClose();
-        }
-
-        private string GetStackTrace()
-        {
-            var stackTrace = new StackTrace();
-            string methodName = (stackTrace.GetFrames().Length > 5)
-                ? stackTrace.GetFrame(5).GetMethod().ToString()
-                : stackTrace.GetFrame(1).GetMethod().ToString();
-            return methodName;
         }
 
         public static bool TestDB(string vendor, string dbsvr, string dbport, string dbname, string id, string pwd)
@@ -179,21 +170,21 @@ namespace Handler.DataBaseHandler
                 activeConnection = null;
             }
 
-            removePoolName(poolName);
+            RemovePoolName(poolName);
         }
 
-        private void initializeConnection()
+        private void InitializeConnection()
         {
             activeConnection = new ConnectionPool()[poolName];
             if (activeConnection == null) throw new Exception("Database Pool not found");
         }
 
-        public void openTx()
+        public void OpenTransaction()
         {
             activeTransaction = activeConnection.BeginTransaction();
         }
 
-        public bool isOpen()
+        public bool IsOpen()
         {
             if (activeTransaction != null && activeTransaction.Connection != null &&
                 activeTransaction.Connection.State == ConnectionState.Open)
@@ -201,7 +192,7 @@ namespace Handler.DataBaseHandler
             return false;
         }
 
-        public void commitTx()
+        public void CommitTransaction()
         {
             try
             {
@@ -214,7 +205,7 @@ namespace Handler.DataBaseHandler
             }
         }
 
-        public void rollbackTx()
+        public void RollBackTransaction()
         {
             try
             {
@@ -226,23 +217,23 @@ namespace Handler.DataBaseHandler
             }
         }
 
-        public void removePoolName(string name)
+        public void RemovePoolName(string name)
         {
             self.Remove(name);
-            ConnectionPool.removePool(name);
+            ConnectionPool.RemovePool(name);
         }
 
-        public DbCommand createCommand(string sqlText, object[] args)
+        public DbCommand CreateCommand(string sqlText, object[] args)
         {
-            return createCommand(vendor.ToUpper(), activeConnection, sqlText, args, activeTransaction);
+            return CreateCommand(vendor.ToUpper(), activeConnection, sqlText, args, activeTransaction);
         }
 
-        internal DbCommand createCommand(string ven, DbConnection conn, string sqlText, object[] args)
+        internal DbCommand CreateCommand(string ven, DbConnection conn, string sqlText, object[] args)
         {
-            return createCommand(ven, conn, sqlText, args, null);
+            return CreateCommand(ven, conn, sqlText, args, null);
         }
 
-        internal DbCommand createCommand(string ven, DbConnection conn, string sqlText, object[] args,
+        internal DbCommand CreateCommand(string ven, DbConnection conn, string sqlText, object[] args,
             DbTransaction tran)
         {
             var command = conn.CreateCommand();
@@ -261,12 +252,12 @@ namespace Handler.DataBaseHandler
                         new SqlParameter(argSymbol + (i + 1), null == args[i] ? DBNull.Value : args[i]));
                 }
             }
-            traceQueryText(command);
+            TraceQueryText(command);
 
             return command;
         }
 
-        public string[][] readerToStringArray(DbDataReader reader)
+        public string[][] ReaderToStringArray(DbDataReader reader)
         {
             var ret = new List<string[]>();
 
@@ -283,7 +274,7 @@ namespace Handler.DataBaseHandler
             return ret.ToArray();
         }
 
-        public DataTable readerToDataTable(DbDataReader reader)
+        public DataTable ReaderToDataTable(DbDataReader reader)
         {
             var ret = new DataTable();
             if (reader != null)
@@ -320,7 +311,7 @@ namespace Handler.DataBaseHandler
             return ret;
         }
 
-        public DataTable paging(DbDataReader reader)
+        public DataTable Paging(DbDataReader reader)
         {
             var ret = new DataTable();
             if (reader != null)
@@ -345,7 +336,7 @@ namespace Handler.DataBaseHandler
             return ret;
         }
 
-        public Process getProcess()
+        public Process GetProcess()
         {
             var procInfo = new ProcessStartInfo();
             procInfo.UseShellExecute = false;
@@ -364,19 +355,13 @@ namespace Handler.DataBaseHandler
             return ret;
         }
 
-        private void appendResultMessage(Hashtable result, string msg)
-        {
-            result[PROC_MESSAGE] = new StringBuilder(result[PROC_MESSAGE].ToString())
-                .AppendLine(msg).ToString();
-        }
-
-        internal DbConnection connectionForAdater()
+        internal DbConnection ConnectionForAdater()
         {
             var connection = new ConnectionPool().getConnectionObject(poolName);
             return connection;
         }
 
-        private void traceQueryText(DbCommand command)
+        private void TraceQueryText(DbCommand command)
         {
             var nCount = command.Parameters.Count;
             var S = command.CommandText;

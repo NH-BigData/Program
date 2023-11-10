@@ -49,7 +49,7 @@ namespace Handler.DataBaseHandler
             }
         }
 
-        public static void removePool(string poolName)
+        public static void RemovePool(string poolName)
         {
             pool.Remove(poolName);
         }
