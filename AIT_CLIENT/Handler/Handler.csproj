@@ -38,11 +38,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Query\Query.csproj">
+      <Project>{F00F5F9A-40CF-4230-B12E-30D57470E6A4}</Project>
+      <Name>Query</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseHandler\ConnectionPool.cs" />
     <Compile Include="DataBaseHandler\DBHandler.cs" />
     <Compile Include="DataBaseHandler\SQLBase.cs" />
+    <Compile Include="DataBaseHandler\SQLcrud.cs" />
     <Compile Include="SecureHandler\DES.cs" />
     <Compile Include="SecureHandler\SecureObject.cs" />
     <Compile Include="SystemConfigHandler\DataBaseConfig.cs" />
