@@ -73,7 +73,7 @@ namespace Handler.DataBaseHandler
             catch (Exception ex)
             {
                 initialzieFlag = false;
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
             }            
         }
 
